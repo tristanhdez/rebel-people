@@ -1,0 +1,534 @@
+@import url('https://fonts.googleapis.com/css2?family=Poor+Story&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap');
+*{
+  font-family: 'Poor Story', cursive;
+  margin: 0;
+  padding: 0;
+  scroll-padding-top: 2rem;
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+}
+
+html::-webkit-scrollbar{
+  width: .4rem;
+}
+
+html::-webkit-scrollbar-track{
+  background: transparent;
+}
+
+html::-webkit-scrollbar-thumb{
+  background:#FFBD0E;
+  border-radius: 5rem;
+}
+
+.modal-cart::-webkit-scrollbar{
+  width: .4rem;
+}
+
+.modal-cart::-webkit-scrollbar-track{
+  background: transparent;
+}
+
+.modal-cart::-webkit-scrollbar-thumb{
+  background:#333;
+  border-radius: 5rem;
+}
+
+.modal-form::-webkit-scrollbar{
+  width: .4rem;
+}
+
+.modal-form::-webkit-scrollbar-track{
+  background: transparent;
+}
+
+.modal-form::-webkit-scrollbar-thumb{
+  background:#333;
+  border-radius: 5rem;
+}
+
+body{
+  background: #333;
+}
+
+img{
+  width: 100%;
+}
+
+.container{
+  max-width: 1068px;
+  margin: auto;
+  width: 100%;
+}
+
+section{
+  padding:2rem 7%;
+}
+
+.header{
+  background: #FFBD0E;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding:1rem 7%;
+  border-bottom: .1rem solid rgb(255, 189, 14,.3);
+  position: fixed;
+  top:0; left: 0; right: 0;
+  z-index: 1000;
+}
+
+.header .logo img{
+  height: 3rem;
+}
+
+.header .navbar a{
+  margin:0 1rem;
+  font-size: 1.3rem;
+  color:#333;
+}
+
+.header .navbar a:hover{
+  color:#335E9A;
+  border-bottom: .1rem solid var(--main-color);
+  padding-bottom: .5rem;
+}
+
+.header .icons div{
+  color:#333;
+  cursor: pointer;
+  font-size: 2.5rem;
+  margin-left: 2rem;
+}
+
+
+.header .icons div:hover{
+  color:#335E9A;
+}
+
+#menu-btn{
+  display: none;
+}
+
+.header .cart-items-container{
+  position: absolute;
+  top:100%; right: -100%;
+  height: calc(100vh - 9.5rem);
+  width: 35rem;
+  background: #fff;
+  padding:0 1.5rem;
+}
+
+.header .cart-items-container.active{
+  right: 0;
+}
+
+.header .cart-items-container .cart-item{
+  position: relative;
+  margin:2rem 0;
+  display: flex;
+  align-items: center;
+  gap:1.5rem;
+}
+
+.header .cart-items-container .cart-item .fa-times{
+  position: absolute;
+  top:1rem; right: 1rem;
+  font-size: 2rem;
+  cursor: pointer;
+  color: black;
+}
+
+.header .cart-items-container .cart-item .fa-times:hover{
+  color:#335E9A;
+}
+
+
+#cart-button{
+  font-size: 1.2rem;
+  background-color: transparent;
+  background-repeat:no-repeat;
+  border: none;
+  color: #333;
+  cursor: pointer;
+}
+
+.cart-box{
+  display: grid;
+  grid-template-columns: 32% 50% 18%;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.modal-container {
+  top: 2rem;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  justify-content: center;
+  align-items: center;
+  transition: all .5s;
+  opacity: 0;
+  visibility: hidden;
+  display: flex;
+  position: fixed;
+  top: 2rem; left: 0;
+}
+
+.modal-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-cart {
+  position: relative;
+  background-color: #FFBD0E;
+  min-width: 500px;
+  max-height: 400px;
+  padding: 20px;
+  margin-top: -100%;
+  transition: all .5s;
+  overflow-y: auto;
+}
+
+.form-container {
+  top: 2rem;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  justify-content: center;
+  align-items: center;
+  transition: all .5s;
+  opacity: 0;
+  visibility: hidden;
+  display: flex;
+  position: fixed;
+  top: 2rem; left: 0;
+}
+
+.modal-form-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-form {
+  position: relative;
+  background-color: #FFBD0E;
+  height: 500px;
+  width: 600px;
+  padding: 20px;
+  transition: all .5s;
+  overflow-y: auto;
+}
+
+.modal-form #closeForm{
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 20px;
+  color: #333;
+  border: none;
+  background-color: #FFBD0E;
+  cursor: pointer;
+}
+
+.modal-form h3, h4{
+  text-align: center;
+}
+
+
+.input-container{
+  display:grid;
+  margin: 10px;
+  padding: 10px;
+}
+
+input{
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  background-color: transparent;
+  font-size: 16px;
+  color: black;
+}
+
+input::placeholder{
+  color: #333;
+}
+
+.detail-box{
+  display: grid;
+  row-gap: 0.5rem;
+}
+
+.modal-active .modal-cart {
+  margin-top: 0;
+}
+
+.modal-cart img{
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  padding: 10px;
+}
+
+.modal-cart .cart-product-title {
+  color: #333;
+  padding-bottom: 5px;
+}
+
+.modal-cart .detail-box{
+  display: grid;
+  row-gap: 0.5rem;
+}
+
+.modal-cart .cart-img{
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  padding: 10px;
+}
+
+.modal-cart .cart-price{
+  font-weight: 500;
+}
+
+
+.modal-cart #closeCart {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 20px;
+  color: #333;
+  border: none;
+  background-color: #FFBD0E;
+}
+
+.modal-cart #closeCart:hover {
+  cursor: pointer;
+}
+.modal-cart #closeCart:focus {
+  outline: none;
+}
+
+.modal-cart .product-price {
+  border-top: 1px solid #333;
+  padding-top: 10px;
+  margin-left: 10rem;
+  color: black;
+}
+
+
+.delete-btn {
+  background-color: #FFBD0E;
+  color: rgb(255, 60, 60);
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  width: 1.3rem;
+}
+
+.buy-btn{
+  color: #fff;
+  cursor: pointer;
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  border: none;
+  margin-top: 1rem;
+  margin-left: 14rem;
+  padding:.5rem 2rem;
+  font-size: 1rem;
+  background: #333;
+  cursor: pointer;
+  display: inline-block;
+}
+
+
+
+
+.home{
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  /*background: url("../img/rebelpeople_wallpaper.png");*/
+  background-size: cover;
+  background-position:top;
+}
+
+
+.home .content{
+  padding-left: 25rem;
+  text-align: center;
+}
+
+.home .content h3{
+  font-family: 'Caveat', cursive;
+  font-size: 4.5rem;
+  color: white;
+}
+
+.home .content p{
+  font-family: 'Caveat', cursive;
+  padding-bottom: 1rem;
+  font-size: 1.5rem;
+  color: white;
+}
+
+.about .row{
+  display: flex;
+  align-items: center;
+  background-color: #333;
+  flex-wrap: wrap;
+}
+
+.about .row .image{
+  flex: 1 1 45rem;
+}
+
+.about .row .image img{
+  width: 100%;
+}
+
+.about .row .content{
+  flex: 1 1 45rem;
+  padding: 2rem;
+}
+
+.about .row .content h3{
+  font-size: 3rem;
+  color:#ffbd0e;
+}
+
+
+.about .row .content p{
+  font-size: 1.6rem;
+  color:#fff;
+  padding: 1rem 0;
+  line-height: 1.8;
+}
+
+.btn{
+  margin-top: 1rem;
+  display: inline-block;
+  padding:.5rem 2rem;
+  font-size: 1.2rem;
+  color: black;
+  background: #FFBD0E;
+  cursor: pointer;
+}
+
+.btn:hover{
+  letter-spacing: .2rem;
+}
+
+.section-title{
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #FFBD0E;
+}
+
+.shop{
+  margin-top: 2rem;
+}
+
+.shop-content{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, auto));
+  gap:1.5rem;
+}
+
+.product-box{
+  position: relative;
+}
+
+.product-box:hover{
+  padding: 10px;
+  border: 1px solid #FFBD0E;
+  transition: 0.4s;
+}
+
+.product-img{
+  width: 100%;
+  height: auto;
+  margin-bottom: 0.5rem;
+}
+
+.product-title{
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #FFBD0E;
+}
+
+.product-price{
+  font-weight: 500;
+  font-size: 1.1rem;
+  color: white;
+}
+
+.product-description{
+  font-size: 1rem;
+  color: white;
+}
+
+.add-cart{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.add-cart:hover{
+  transition: 0.3s;
+  background: #FFBD0E;
+  color: #333;
+}
+
+.stars{
+  padding: 0;
+}
+
+.stars i {
+  font-size: 1rem;
+  color: #FFBD0E;
+}
+
+.footer{
+  text-align: center;
+}
+
+.footer .share{
+  padding: 0.5rem 0;
+}
+
+.footer .share a{
+  height: 5rem;
+  width: 5rem;
+  line-height: 5rem;
+  font-size: 1.5rem;
+  color: #fff;
+  border: .1rem solid rgba(51, 51, 51, 0.3);
+}
+
+.footer .share a:hover{
+  color: #335E9A;
+}
+
+.footer .credits{
+  font-size: 1rem;
+  color: #fff;
+  font-weight: lighter;
+  padding: 0.5rem;
+}
+
+.footer .credits span{
+  color: #FFBD0E;
+}
